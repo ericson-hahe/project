@@ -1,0 +1,1718 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudentCampus | Student Portal</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --navy: #17365d;
+  --blue: #2f6297;
+  --blue-light: #eaf2fb;
+  --gold: #e9b957;
+  --ink: #1c2938;
+  --muted: #718096;
+  --line: #e5eaf0;
+  --bg: #f4f7fb;
+  --green: #23845b;
+  --red: #c74747;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', Arial, sans-serif;
+  min-height: 100vh;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* HEADER */
+
+.topbar {
+  height: 76px;
+  background: white;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6.5%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.brand strong {
+  display: block;
+  font-size: 15px;
+}
+
+.brand small {
+  display: block;
+  color: #8793a2;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  margin-top: 3px;
+}
+
+.topbar-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #35a879;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* LOGIN AND REGISTRATION */
+
+.auth-layout {
+  max-width: 1180px;
+  margin: 52px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+  min-height: calc(100vh - 128px);
+}
+
+.welcome-panel {
+  padding: 35px 15px 35px 20px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: var(--blue);
+  display: block;
+}
+
+.welcome-panel h1 {
+  font: 800 clamp(35px, 4.2vw, 53px)/1.13 Manrope, sans-serif;
+  letter-spacing: -2px;
+  max-width: 490px;
+  margin: 17px 0;
+}
+
+.welcome-panel h1 span {
+  color: var(--blue);
+}
+
+.welcome-panel > p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 430px;
+}
+
+/* SCHOOL ILLUSTRATION */
+
+.campus-art {
+  height: 230px;
+  max-width: 460px;
+  position: relative;
+  margin: 40px auto 10px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #e8f2fc, #f7f8f5);
+}
+
+.sun {
+  position: absolute;
+  right: 58px;
+  top: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f4d58d;
+}
+
+.cloud {
+  position: absolute;
+  width: 70px;
+  height: 19px;
+  background: white;
+  border-radius: 30px;
+  top: 55px;
+  left: 45px;
+}
+
+.cloud:before, .cloud:after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud:before {
+  width: 28px;
+  height: 28px;
+  left: 12px;
+  bottom: 3px;
+}
+
+.cloud:after {
+  width: 34px;
+  height: 34px;
+  left: 30px;
+  bottom: 0;
+}
+
+.cloud-two {
+  top: 92px;
+  left: auto;
+  right: 145px;
+  transform: scale(.7);
+}
+
+.building {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  height: 142px;
+}
+
+.roof {
+  height: 0;
+  width: 0;
+  border-left: 130px solid transparent;
+  border-right: 130px solid transparent;
+  border-bottom: 42px solid #294d70;
+  position: absolute;
+  left: -15px;
+  top: 0;
+}
+
+.building-body {
+  position: absolute;
+  top: 42px;
+  width: 200px;
+  height: 90px;
+  left: 15px;
+  background: white;
+  border: 4px solid #294d70;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  padding: 12px 18px;
+}
+
+.building-body i {
+  background: #b9d5e9;
+  border: 2px solid #294d70;
+}
+
+.steps {
+  position: absolute;
+  bottom: 0;
+  left: 75px;
+  width: 80px;
+  height: 9px;
+  background: #294d70;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  background: #b5cba9;
+}
+
+.welcome-foot {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+/* FORM CARD */
+
+.form-side {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 38px;
+  width: 100%;
+  max-width: 465px;
+  box-shadow: 0 18px 55px rgba(29,57,87,.08);
+}
+
+.form-heading {
+  margin-bottom: 27px;
+}
+
+.form-heading h2 {
+  font: 700 25px Manrope, sans-serif;
+  margin: 10px 0 7px;
+}
+
+.form-heading p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.auth-card label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 17px 0 7px;
+  color: #34445a;
+}
+
+.auth-card input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #dce3eb;
+  border-radius: 9px;
+  padding: 0 13px;
+  outline: none;
+  background: #fbfcfe;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.auth-card input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47,98,151,.1);
+}
+
+.auth-card input.invalid {
+  border-color: var(--red);
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 65px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.field-hint {
+  display: block;
+  color: #8b96a5;
+  font-size: 10px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* BUTTONS */
+
+.primary-btn {
+  width: 100%;
+  height: 47px;
+  margin-top: 15px;
+  background: var(--navy);
+  border: 0;
+  border-radius: 9px;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.primary-btn:hover {
+  background: #244c79;
+}
+
+.primary-btn span {
+  float: right;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.switch-copy {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 20px 0 0;
+}
+
+.text-btn {
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.form-message {
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  min-height: 16px;
+}
+
+.form-message.error {
+  color: var(--red);
+}
+
+.form-message.success {
+  color: var(--green);
+}
+
+.security-note {
+  border-top: 1px solid var(--line);
+  margin-top: 25px;
+  padding-top: 17px;
+  text-align: center;
+  color: #99a3b0;
+  font-size: 10px;
+}
+
+.mobile-brand {
+  display: none;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: 245px 1fr;
+}
+
+.sidebar {
+  background: white;
+  border-right: 1px solid var(--line);
+  padding: 27px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand {
+  padding: 0 8px 38px;
+}
+
+.side-label {
+  font-size: 9px;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+  color: #a0aab6;
+  padding: 0 12px 12px;
+}
+
+.nav-item {
+  border: 0;
+  background: transparent;
+  color: #6e7c8d;
+  text-align: left;
+  padding: 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 3px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-item span {
+  font-size: 17px;
+  width: 18px;
+}
+
+.nav-item.active, .nav-item:hover {
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.help-card {
+  background: #f3f7fc;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.help-card strong {
+  font-size: 11px;
+}
+
+.help-card p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.logout-btn {
+  width: 100%;
+  color: #b34c4c;
+}
+
+.dashboard-main {
+  max-width: 1180px;
+  width: 100%;
+  padding: 35px 5%;
+  margin: 0 auto;
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.dash-header h2 {
+  font: 700 26px Manrope, sans-serif;
+  margin: 7px 0 0;
+}
+
+.profile-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8f0f8;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.profile-chip strong, .profile-chip small {
+  display: block;
+}
+
+.profile-chip strong {
+  font-size: 11px;
+}
+
+.profile-chip small {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* WELCOME BANNER */
+
+.greeting-card {
+  border-radius: 16px;
+  padding: 28px 32px;
+  background: linear-gradient(110deg, #17365d, #2e6598);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eyebrow.light {
+  color: #c8d9eb;
+}
+
+.greeting-card h1 {
+  font: 700 27px Manrope, sans-serif;
+  margin: 9px 0;
+}
+
+.greeting-card p {
+  font-size: 12px;
+  color: #d8e4f0;
+}
+
+.greeting-icon {
+  font-size: 55px;
+}
+
+/* STUDENT INFORMATION */
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 32px 0 15px;
+}
+
+.section-title h3, .details-card h3 {
+  font: 700 17px Manrope, sans-serif;
+  margin: 6px 0 0;
+}
+
+.verified {
+  font-size: 10px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.info-card, .details-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 19px;
+}
+
+.info-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+
+.info-icon.blue {
+  background: #eaf2fb;
+  color: #356c9e;
+}
+
+.info-icon.gold {
+  background: #fff5df;
+  color: #b78a31;
+}
+
+.info-icon.green {
+  background: #e9f7f0;
+  color: #26835b;
+}
+
+.info-card > span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #8a96a5;
+  font-weight: 700;
+}
+
+.info-card strong {
+  display: block;
+  font-size: 13px;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+
+.info-card small {
+  display: block;
+  color: #9aa4b0;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+/* PROFILE DETAILS */
+
+.details-card {
+  margin-top: 18px;
+}
+
+.details-card > div:first-child p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 7px 0 18px;
+}
+
+.detail-row {
+  border-top: 1px solid #edf0f4;
+  padding: 13px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.detail-row strong {
+  color: #34445a;
+  font-weight: 600;
+}
+
+.dash-footer {
+  display: flex;
+  justify-content: space-between;
+  color: #9aa4b0;
+  font-size: 10px;
+  padding: 25px 2px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 900px) {
+  .auth-layout {
+    gap: 15px;
+  }
+
+  .auth-card {
+    padding: 28px;
+  }
+
+  .dashboard {
+    grid-template-columns: 205px 1fr;
+  }
+
+  .dashboard-main {
+    padding: 30px 4%;
+  }
+}
+
+@media(max-width: 680px) {
+  .topbar {
+    height: 64px;
+    padding: 0 18px;
+  }
+
+  .auth-layout {
+    display: block;
+    margin: 22px auto;
+    padding: 0 15px;
+    min-height: auto;
+  }
+
+  .welcome-panel {
+    display: none;
+  }
+
+  .auth-card {
+    max-width: none;
+    padding: 25px 21px;
+  }
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+
+  .dashboard {
+    display: block;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 15px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .sidebar-brand {
+    padding: 0 5px;
+    margin-right: auto;
+    flex-shrink: 0;
+  }
+
+  .side-label, .sidebar-bottom {
+    display: none;
+  }
+
+  .sidebar .nav-item {
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 10px;
+  }
+
+  .dashboard-main {
+    padding: 25px 17px;
+  }
+
+  .dash-header h2 {
+    font-size: 23px;
+  }
+
+  .profile-chip small {
+    display: none;
+  }
+
+  .greeting-card {
+    padding: 23px 20px;
+  }
+
+  .greeting-card h1 {
+    font-size: 22px;
+  }
+
+  .greeting-icon {
+    font-size: 39px;
+  }
+
+  .section-title {
+    align-items: start;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    column-gap: 10px;
+    align-items: center;
+    padding: 14px;
+  }
+
+  .info-icon {
+    grid-row: 1 / 4;
+    margin: 0;
+  }
+
+  .info-card > span,
+  .info-card strong,
+  .info-card small {
+    grid-column: 2;
+  }
+
+  .detail-row {
+    gap: 15px;
+  }
+
+  .dash-footer {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+<header class="topbar">
+  <a class="brand" href="#">
+    <span class="brand-mark">CC</span>
+    <span>
+      <strong>CampusConnect</strong>
+      <small>STUDENT PORTAL</small>
+    </span>
+  </a>
+
+  <div class="topbar-note">
+    <span class="status-dot"></span> Academic Portal
+  </div>
+</header>
+
+<main>
+
+<!-- LOGIN AND REGISTRATION -->
+
+<section id="authView" class="auth-layout">
+
+  <div class="welcome-panel">
+    <div class="eyebrow">YOUR CAMPUS, CONNECTED</div>
+
+    <h1>Make your student journey <span>simpler.</span></h1>
+
+    <p>
+      Access your student profile through a clean,
+      simple, and convenient portal.
+    </p>
+
+    <div class="campus-art">
+      <div class="sun"></div>
+      <div class="cloud cloud-one"></div>
+      <div class="cloud cloud-two"></div>
+
+      <div class="building">
+        <div class="roof"></div>
+
+        <div class="building-body">
+          <i></i><i></i><i></i>
+          <i></i><i></i><i></i>
+          <i></i><i></i><i></i>
+        </div>
+
+        <div class="steps"></div>
+      </div>
+
+      <div class="ground"></div>
+    </div>
+
+    <div class="welcome-foot">
+      ✦ Learn. Grow. Achieve.
+    </div>
+  </div>
+
+  <div class="form-side">
+    <div class="auth-card">
+
+      <div class="mobile-brand">
+        <span class="brand-mark">CC</span>
+        <strong>CampusConnect</strong>
+      </div>
+
+      <div class="form-heading">
+        <span class="eyebrow" id="formEyebrow">WELCOME BACK</span>
+        <h2 id="formTitle">Sign in to your account</h2>
+        <p id="formSubtitle">
+          Enter your student details to continue.
+        </p>
+      </div>
+
+      <!-- LOGIN FORM -->
+
+      <form id="loginForm" novalidate>
+
+        <label for="loginEmail">Email address</label>
+
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="name@example.com"
+          autocomplete="email"
+        >
+
+        <label for="loginPassword">Password</label>
+
+        <div class="password-wrap">
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+          >
+
+          <button
+            class="toggle-password"
+            type="button"
+            data-toggle="loginPassword"
+          >Show</button>
+        </div>
+
+        <p class="form-message" id="loginMessage" aria-live="polite"></p>
+
+        <button class="primary-btn" type="submit">
+          Sign in <span>→</span>
+        </button>
+
+        <p class="switch-copy">
+          New to CampusConnect?
+
+          <button
+            type="button"
+            class="text-btn"
+            id="showRegister"
+          >Create an account</button>
+        </p>
+
+      </form>
+
+      <!-- REGISTRATION FORM -->
+
+      <form id="registerForm" class="hidden" novalidate>
+
+        <label for="fullName">Full name</label>
+
+        <input
+          id="fullName"
+          type="text"
+          placeholder="Enter your full name"
+          autocomplete="name"
+        >
+
+        <label for="studentNumber">Student number</label>
+
+        <input
+          id="studentNumber"
+          type="text"
+          placeholder="2026-0001"
+          autocomplete="off"
+        >
+
+        <small class="field-hint">
+          Format: YYYY-0000 (example: 2026-0001)
+        </small>
+
+        <label for="registerEmail">Email address</label>
+
+        <input
+          id="registerEmail"
+          type="email"
+          placeholder="name@example.com"
+          autocomplete="email"
+        >
+
+        <label for="registerPassword">Password</label>
+
+        <div class="password-wrap">
+          <input
+            id="registerPassword"
+            type="password"
+            placeholder="Create a strong password"
+            autocomplete="new-password"
+          >
+
+          <button
+            class="toggle-password"
+            type="button"
+            data-toggle="registerPassword"
+          >Show</button>
+        </div>
+
+        <small class="field-hint">
+          At least 8 characters with uppercase, lowercase,
+          number, and special character.
+        </small>
+
+        <label for="confirmPassword">Confirm password</label>
+
+        <input
+          id="confirmPassword"
+          type="password"
+          placeholder="Enter your password again"
+          autocomplete="new-password"
+        >
+
+        <p class="form-message" id="registerMessage" aria-live="polite"></p>
+
+        <button class="primary-btn" type="submit">
+          Create account <span>→</span>
+        </button>
+
+        <p class="switch-copy">
+          Already registered?
+
+          <button
+            type="button"
+            class="text-btn"
+            id="showLogin"
+          >Sign in</button>
+        </p>
+
+      </form>
+
+      <div class="security-note">
+        ▣ Frontend demonstration · No server connection
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- STUDENT DASHBOARD -->
+
+<section id="dashboardView" class="dashboard hidden">
+
+  <aside class="sidebar">
+
+    <a class="brand sidebar-brand" href="#">
+      <span class="brand-mark">CC</span>
+
+      <span>
+        <strong>CampusConnect</strong>
+        <small>STUDENT PORTAL</small>
+      </span>
+    </a>
+
+    <div class="side-label">MENU</div>
+
+    <button class="nav-item active" type="button">
+      <span>▦</span> Overview
+    </button>
+
+    <button class="nav-item" type="button" id="profileNav">
+      <span>♙</span> My profile
+    </button>
+
+    <div class="sidebar-bottom">
+
+      <div class="help-card">
+        <strong>Need assistance?</strong>
+
+        <p>
+          Contact your school administrator
+          for account concerns.
+        </p>
+      </div>
+
+      <button
+        class="nav-item logout-btn"
+        type="button"
+        id="logoutButton"
+      >
+        <span>↪</span> Log out
+      </button>
+
+    </div>
+
+  </aside>
+
+  <div class="dashboard-main">
+
+    <header class="dash-header">
+
+      <div>
+        <span class="eyebrow">STUDENT PORTAL</span>
+        <h2>Overview</h2>
+      </div>
+
+      <div class="profile-chip">
+        <div class="avatar" id="avatarInitials">ST</div>
+
+        <div>
+          <strong id="headerName">Student</strong>
+          <small>Student account</small>
+        </div>
+      </div>
+
+    </header>
+
+    <section class="greeting-card">
+
+      <div>
+        <span class="eyebrow light">YOUR STUDENT SPACE</span>
+
+        <h1 id="welcomeName">Welcome back!</h1>
+
+        <p>
+          Your student information is ready
+          whenever you need it.
+        </p>
+      </div>
+
+      <div class="greeting-icon">🎓</div>
+
+    </section>
+
+    <div class="section-title">
+
+      <div>
+        <span class="eyebrow">ACCOUNT SUMMARY</span>
+        <h3>Student information</h3>
+      </div>
+
+      <span class="verified">● Registered account</span>
+
+    </div>
+
+    <section class="info-grid">
+
+      <article class="info-card">
+        <div class="info-icon blue">♙</div>
+        <span>FULL NAME</span>
+        <strong id="studentName">—</strong>
+        <small>Registered student</small>
+      </article>
+
+      <article class="info-card">
+        <div class="info-icon gold">▤</div>
+        <span>STUDENT NUMBER</span>
+        <strong id="studentId">—</strong>
+        <small>Student identification</small>
+      </article>
+
+      <article class="info-card">
+        <div class="info-icon green">✉</div>
+        <span>EMAIL ADDRESS</span>
+        <strong id="studentEmail">—</strong>
+        <small>Account email</small>
+      </article>
+
+    </section>
+
+    <section class="details-card" id="profileDetails">
+
+      <div>
+        <span class="eyebrow">PROFILE DETAILS</span>
+        <h3>Account overview</h3>
+
+        <p>
+          Here are the details associated with
+          your current session.
+        </p>
+      </div>
+
+      <div class="detail-row">
+        <span>Account status</span>
+
+        <strong>
+          <span class="status-dot"></span>
+          Active this session
+        </strong>
+      </div>
+
+      <div class="detail-row">
+        <span>Portal access</span>
+        <strong>Student</strong>
+      </div>
+
+      <div class="detail-row">
+        <span>Last signed in</span>
+        <strong id="loginTime">—</strong>
+      </div>
+
+    </section>
+
+    <footer class="dash-footer">
+      © <span id="year"></span> CampusConnect Student Portal
+      <span>Frontend demonstration</span>
+    </footer>
+
+  </div>
+
+</section>
+
+</main>
+</div>
+
+<script>
+// =======================================
+// CAMPUSCONNECT STUDENT INFORMATION SYSTEM
+// FRONTEND JAVASCRIPT
+// =======================================
+
+// SELECT HTML ELEMENTS
+
+const authView = document.getElementById("authView");
+const dashboardView = document.getElementById("dashboardView");
+
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+// ACCOUNT VARIABLES
+
+let registeredStudent = null;
+let activeStudent = null;
+
+// SHORTCUT FOR SELECTING ELEMENTS
+
+const $ = (id) => document.getElementById(id);
+
+
+// DISPLAY MESSAGES
+
+function showMessage(element, message = "", type = "") {
+  element.textContent = message;
+  element.className = `form-message ${type}`;
+}
+
+
+// CLEAR INVALID INPUTS
+
+function clearInvalid(form) {
+  form.querySelectorAll("input").forEach(input => {
+    input.classList.remove("invalid");
+  });
+}
+
+
+// HIGHLIGHT INVALID INPUT
+
+function markInvalid(input) {
+  input.classList.add("invalid");
+  input.focus();
+}
+
+
+// SHOW LOGIN FORM
+
+function showLogin() {
+
+  loginForm.classList.remove("hidden");
+  registerForm.classList.add("hidden");
+
+  $("formEyebrow").textContent = "WELCOME BACK";
+
+  $("formTitle").textContent =
+    "Sign in to your account";
+
+  $("formSubtitle").textContent =
+    "Enter your student details to continue.";
+
+  showMessage($("loginMessage"));
+
+  clearInvalid(loginForm);
+}
+
+
+// SHOW REGISTRATION FORM
+
+function showRegister() {
+
+  loginForm.classList.add("hidden");
+  registerForm.classList.remove("hidden");
+
+  $("formEyebrow").textContent = "JOIN THE PORTAL";
+
+  $("formTitle").textContent =
+    "Create your account";
+
+  $("formSubtitle").textContent =
+    "Register your student information below.";
+
+  showMessage($("registerMessage"));
+
+  clearInvalid(registerForm);
+}
+
+
+// FORM NAVIGATION
+
+$("showRegister").addEventListener(
+  "click",
+  showRegister
+);
+
+$("showLogin").addEventListener(
+  "click",
+  showLogin
+);
+
+
+// SHOW AND HIDE PASSWORD
+
+document.querySelectorAll("[data-toggle]").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const field = $(button.dataset.toggle);
+
+    const showing = field.type === "text";
+
+    field.type = showing ? "password" : "text";
+
+    button.textContent = showing ? "Show" : "Hide";
+
+  });
+
+});
+
+
+// EMAIL VALIDATION
+
+function validEmail(email) {
+
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+}
+
+
+// PASSWORD VALIDATION
+
+function validPassword(password) {
+
+  return password.length >= 8 &&
+    /[A-Z]/.test(password) &&
+    /[a-z]/.test(password) &&
+    /\d/.test(password) &&
+    /[^A-Za-z0-9]/.test(password);
+
+}
+
+
+// =======================================
+// REGISTRATION FUNCTION
+// =======================================
+
+registerForm.addEventListener("submit", (event) => {
+
+  event.preventDefault();
+
+  clearInvalid(registerForm);
+
+  const name = $("fullName").value.trim();
+
+  const studentNumber =
+    $("studentNumber").value.trim();
+
+  const email =
+    $("registerEmail").value.trim().toLowerCase();
+
+  const password =
+    $("registerPassword").value;
+
+  const confirmPassword =
+    $("confirmPassword").value;
+
+  const message = $("registerMessage");
+
+
+  // CHECK FULL NAME
+
+  if (!name) {
+
+    markInvalid($("fullName"));
+
+    showMessage(
+      message,
+      "Please enter your full name.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // CHECK STUDENT NUMBER
+
+  if (!/^\d{4}-\d{4}$/.test(studentNumber)) {
+
+    markInvalid($("studentNumber"));
+
+    showMessage(
+      message,
+      "Use the student number format YYYY-0000, such as 2026-0001.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // CHECK EMAIL
+
+  if (!validEmail(email)) {
+
+    markInvalid($("registerEmail"));
+
+    showMessage(
+      message,
+      "Please enter a valid email address.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // CHECK PASSWORD
+
+  if (!validPassword(password)) {
+
+    markInvalid($("registerPassword"));
+
+    showMessage(
+      message,
+      "Password must be 8+ characters and include uppercase, lowercase, a number, and a special character.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // CHECK CONFIRM PASSWORD
+
+  if (password !== confirmPassword) {
+
+    markInvalid($("confirmPassword"));
+
+    showMessage(
+      message,
+      "The passwords do not match. Please try again.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // SAVE REGISTERED STUDENT INFORMATION
+
+  registeredStudent = {
+    name: name,
+    studentNumber: studentNumber,
+    email: email,
+    password: password
+  };
+
+
+  // CLEAR REGISTRATION FORM
+
+  registerForm.reset();
+
+
+  // RETURN TO LOGIN
+
+  showLogin();
+
+  $("loginEmail").value = email;
+
+  showMessage(
+    $("loginMessage"),
+    "Registration successful. You can now sign in.",
+    "success"
+  );
+
+});
+
+
+// =======================================
+// LOGIN FUNCTION
+// =======================================
+
+loginForm.addEventListener("submit", (event) => {
+
+  event.preventDefault();
+
+  clearInvalid(loginForm);
+
+  const email =
+    $("loginEmail").value.trim().toLowerCase();
+
+  const password =
+    $("loginPassword").value;
+
+  const message = $("loginMessage");
+
+
+  // CHECK EMAIL
+
+  if (!validEmail(email)) {
+
+    markInvalid($("loginEmail"));
+
+    showMessage(
+      message,
+      "Enter a valid email address.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // CHECK PASSWORD
+
+  if (!password) {
+
+    markInvalid($("loginPassword"));
+
+    showMessage(
+      message,
+      "Please enter your password.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // CHECK ACCOUNT
+
+  if (!registeredStudent) {
+
+    showMessage(
+      message,
+      "No account is registered in this session. Please create an account first.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // VERIFY LOGIN DETAILS
+
+  if (
+    email !== registeredStudent.email ||
+    password !== registeredStudent.password
+  ) {
+
+    showMessage(
+      message,
+      "The email or password is incorrect. Please check your details.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  // SUCCESSFUL LOGIN
+
+  activeStudent = registeredStudent;
+
+  loginForm.reset();
+
+  renderDashboard();
+
+});
+
+
+// =======================================
+// GET STUDENT INITIALS
+// =======================================
+
+function initials(name) {
+
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map(part => part[0].toUpperCase())
+    .join("");
+
+}
+
+
+// =======================================
+// DISPLAY DASHBOARD
+// =======================================
+
+function renderDashboard() {
+
+  $("headerName").textContent =
+    activeStudent.name;
+
+  $("avatarInitials").textContent =
+    initials(activeStudent.name);
+
+  $("welcomeName").textContent =
+    `Welcome, ${activeStudent.name.split(" ")[0]}!`;
+
+  $("studentName").textContent =
+    activeStudent.name;
+
+  $("studentId").textContent =
+    activeStudent.studentNumber;
+
+  $("studentEmail").textContent =
+    activeStudent.email;
+
+  $("loginTime").textContent =
+    new Date().toLocaleString();
+
+  $("year").textContent =
+    new Date().getFullYear();
+
+
+  // HIDE LOGIN AND REGISTRATION
+
+  authView.classList.add("hidden");
+
+
+  // SHOW DASHBOARD
+
+  dashboardView.classList.remove("hidden");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+// =======================================
+// LOGOUT FUNCTION
+// =======================================
+
+function logout() {
+
+  activeStudent = null;
+
+  dashboardView.classList.add("hidden");
+
+  authView.classList.remove("hidden");
+
+  showLogin();
+
+  showMessage(
+    $("loginMessage"),
+    "You have been logged out successfully.",
+    "success"
+  );
+
+}
+
+
+// LOGOUT BUTTON
+
+$("logoutButton").addEventListener(
+  "click",
+  logout
+);
+
+
+// MY PROFILE NAVIGATION
+
+$("profileNav").addEventListener("click", () => {
+
+  $("profileDetails").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+});
+
+
+// AUTOMATIC COPYRIGHT YEAR
+
+$("year").textContent =
+  new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
